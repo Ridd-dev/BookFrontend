@@ -1,0 +1,59 @@
+<div class="container">
+  <form (submit)="submitForm()" #bookForm="ngForm">
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="formData.title"
+      required
+      placeholder="Title"
+    />
+    <input
+      type="text"
+      name="author"
+      [(ngModel)]="formData.author"
+      required
+      placeholder="Author"
+    />
+    <input
+      type="text"
+      name="isbn"
+      [(ngModel)]="formData.isbn"
+      required
+      placeholder="ISBN"
+    />
+    <input
+      type="date"
+      name="publicationDate"
+      [(ngModel)]="formData.publicationDate"
+      required
+    />
+    <button type="submit">{{ editMode ? "Update" : "Add" }} Book</button>
+    <button type="button" *ngIf="editMode" (click)="resetForm()">
+      Cancel Edit
+    </button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Publication Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.publicationDate | date }}</td>
+        <td>
+          <button (click)="edit(book)">Edit</button>
+          <button (click)="delete(book.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
