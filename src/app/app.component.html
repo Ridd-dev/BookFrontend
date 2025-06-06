@@ -1,1 +1,64 @@
-<app-book></app-book>
+<div class="app-layout">
+  <!-- Top Navigation Bar -->
+  <nav class="top-navbar">
+    <div class="navbar-left">
+      <span class="company-name">📚 Enhanzer Books</span>
+    </div>
+    
+    <div class="navbar-center">
+      <button class="settings-btn" title="Settings">
+        <i class="settings-icon">⚙️</i>
+      </button>
+      <div class="dashboard-section">
+        <i class="home-icon">🏠</i>
+        <span class="dashboard-text">Dashboard</span>
+      </div>
+    </div>
+    
+    <div class="navbar-right">
+      <div class="profile-section" title="Profile">
+        <i class="profile-icon">👤</i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout with Left Sidebar -->
+  <div class="main-layout">
+    <!-- Left Sidebar Navigation -->
+    <nav class="left-sidebar">
+      <div class="sidebar-header">
+        <h2>📚 Menu</h2>
+      </div>
+      
+      <div class="sidebar-menu">
+        <button
+          (click)="showDashboard()"
+          [class.active]="currentView === 'dashboard'"
+          class="nav-btn">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Dashboard</span>
+        </button>
+        
+        <button
+          (click)="showBooks()"
+          [class.active]="currentView === 'books'"
+          class="nav-btn">
+          <span class="nav-icon">📖</span>
+          <span class="nav-text">Manage Books</span>
+        </button>
+      </div>
+      
+      <div class="sidebar-footer">
+        <p>SE_V3B Assignment</p>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <app-dashboard *ngIf="currentView === 'dashboard'"></app-dashboard>
+        <app-book *ngIf="currentView === 'books'"></app-book>
+      </div>
+    </main>
+  </div>
+</div>

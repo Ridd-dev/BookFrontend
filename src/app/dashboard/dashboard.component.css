@@ -1,0 +1,293 @@
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 20px 20px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 60px);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+/* Horizontal Layout for Widgets */
+.widgets-container {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.widget {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease;
+  flex: 1;
+  min-width: 0;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.widget:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.widget h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Table Widget Styles */
+.widget.table-widget {
+  flex: 1.1;
+  min-width: 300px;
+}
+
+.table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+}
+
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+.books-table th,
+.books-table td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.books-table th {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+  position: sticky;
+  top: 0;
+}
+
+.books-table tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+/* List Widget Styles */
+.widget.list-widget {
+  flex: 1.2;
+  min-width: 300px;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.book-item {
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  transition: all 0.3s ease;
+  border-left: 4px solid #3498db;
+}
+
+.book-item:hover {
+  transform: translateX(3px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-left-color: #e74c3c;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.book-id {
+  font-weight: bold;
+  color: #3498db;
+  background: #ebf3fd;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.book-title {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.book-isbn {
+  color: #7f8c8d;
+  font-size: 0.8rem;
+  background: #f8f9fa;
+  padding: 3px 8px;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.book-date {
+  color: #27ae60;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #d5f4e6;
+  padding: 3px 8px;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+/* Chart Widget Styles */
+.widget.chart-widget {
+  flex: 1;
+  min-width: 280px;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  height: 400px;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  padding-right: 5px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.legend-item:hover {
+  background-color: #f8f9fa;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.legend-text {
+  font-size: 0.8rem;
+  color: #2c3e50;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* No Data Styles */
+.no-data {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  padding: 30px 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-container {
+    padding: 20px 15px;
+  }
+  
+  .widgets-container {
+    gap: 12px;
+  }
+  
+  .widget {
+    padding: 18px;
+    min-width: 280px;
+  }
+  
+  .chart-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .widgets-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .widget {
+    max-width: 100%;
+    min-width: auto;
+  }
+  
+  .book-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .chart-container {
+    flex-direction: row;
+    gap: 25px;
+    height: auto;
+  }
+  
+  .chart-wrapper {
+    width: 250px;
+    height: 250px;
+  }
+}

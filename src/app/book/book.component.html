@@ -1,59 +1,117 @@
 <div class="container">
-  <form (submit)="submitForm()" #bookForm="ngForm">
-    <input
-      type="text"
-      name="title"
-      [(ngModel)]="formData.title"
-      required
-      placeholder="Title"
-    />
-    <input
-      type="text"
-      name="author"
-      [(ngModel)]="formData.author"
-      required
-      placeholder="Author"
-    />
-    <input
-      type="text"
-      name="isbn"
-      [(ngModel)]="formData.isbn"
-      required
-      placeholder="ISBN"
-    />
-    <input
-      type="date"
-      name="publicationDate"
-      [(ngModel)]="formData.publicationDate"
-      required
-    />
-    <button type="submit">{{ editMode ? "Update" : "Add" }} Book</button>
-    <button type="button" *ngIf="editMode" (click)="resetForm()">
-      Cancel Edit
-    </button>
+  <h2>📚 Book Management</h2>
+  
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading...
+  </div>
+  
+  <form #bookForm="ngForm" (ngSubmit)="submitForm()" class="book-form" [class.disabled]="isLoading">
+    <div class="form-row">
+      <input
+        type="text"
+        [(ngModel)]="formData.title"
+        name="title"
+        placeholder="Book Title *"
+        required
+        class="form-input"
+        [disabled]="isLoading"
+      />
+      <input
+        type="text"
+        [(ngModel)]="formData.author"
+        name="author"
+        placeholder="Author *"
+        required
+        class="form-input"
+        [disabled]="isLoading"
+      />
+    </div>
+    
+    <div class="form-row">
+      <input
+        type="text"
+        [(ngModel)]="formData.isbn"
+        name="isbn"
+        placeholder="ISBN *"
+        required
+        class="form-input"
+        [disabled]="isLoading"
+      />
+      <input
+        type="date"
+        [(ngModel)]="formData.publicationDate"
+        name="publicationDate"
+        required
+        class="form-input"
+        [disabled]="isLoading"
+      />
+    </div>
+    
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="isLoading || !bookForm.form.valid">
+        {{ editMode ? '✏️ Update Book' : '➕ Add Book' }}
+      </button>
+      <button
+        type="button"
+        (click)="resetForm()"
+        class="btn-reset"
+        *ngIf="editMode"
+        [disabled]="isLoading">
+        ❌ Cancel
+      </button>
+    </div>
   </form>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
-        <th>Publication Date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of books">
-        <td>{{ book.title }}</td>
-        <td>{{ book.author }}</td>
-        <td>{{ book.isbn }}</td>
-        <td>{{ book.publicationDate | date }}</td>
-        <td>
-          <button (click)="edit(book)">Edit</button>
-          <button (click)="delete(book.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <h3>📋 Books List ({{ books.length }} books)</h3>
+    <div class="table-container">
+      <table class="books-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Publication Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publicationDate | date:'shortDate' }}</td>
+            <td class="actions">
+              <button
+                (click)="edit(book)"
+                class="btn-edit"
+                [disabled]="isLoading">
+                ✏️ Edit
+              </button>
+              <button
+                (click)="delete(book.id)"
+                class="btn-delete"
+                [disabled]="isLoading">
+                🗑️ Delete
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="books.length === 0 && !isLoading">
+            <td colspan="6" class="no-books">
+              No books available. Add some books to get started!
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
