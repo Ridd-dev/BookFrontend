@@ -6,10 +6,9 @@
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-left: 20px; /* Changed from margin-right to margin-left */
+  margin-left: 20px;
 }
 
-/* Keep all other styles exactly the same */
 h2 {
   text-align: center;
   color: #333;
@@ -193,7 +192,7 @@ h3 {
 
 @media (max-width: 1200px) {
   .container {
-    margin-left: 10px; /* Changed from margin-right to margin-left */
+    margin-left: 10px;
     padding: 25px;
   }
 }
@@ -202,7 +201,7 @@ h3 {
   .container {
     margin: 20px;
     padding: 20px;
-    margin-left: 20px; /* Changed from margin-right to margin-left */
+    margin-left: 20px;
   }
   
   .form-row {
@@ -230,7 +229,6 @@ h3 {
   }
 }
 
-/* Enhanced Form Styling */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -285,7 +283,6 @@ h3 {
   100% { transform: rotate(360deg); }
 }
 
-/* Enhanced Table */
 .table-header {
   display: flex;
   justify-content: space-between;
@@ -311,7 +308,6 @@ h3 {
   transform: translateX(2px);
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 40px 20px;
@@ -332,7 +328,6 @@ h3 {
   margin: 0;
 }
 
-/* Code styling for ISBN */
 code {
   background: #f8f9fa;
   padding: 2px 6px;

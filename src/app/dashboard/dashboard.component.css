@@ -98,7 +98,6 @@ h1 {
   transition: background-color 0.2s ease;
 }
 
-/* List Widget Styles */
 .widget.list-widget {
   flex: 1.2;
   min-width: 300px;
@@ -169,7 +168,6 @@ h1 {
   width: fit-content;
 }
 
-/* Chart Widget Styles */
 .widget.chart-widget {
   flex: 1;
   min-width: 280px;
@@ -229,7 +227,6 @@ h1 {
   line-height: 1.2;
 }
 
-/* No Data Styles */
 .no-data {
   text-align: center;
   color: #7f8c8d;
@@ -241,7 +238,6 @@ h1 {
   font-size: 0.9rem;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .dashboard-container {
     padding: 20px 15px;
